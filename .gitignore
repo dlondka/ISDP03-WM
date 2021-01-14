@@ -23,6 +23,9 @@
 .idea/*
 WM.iml
 
+# NetBeans files
+nb-configuration.xml
+
 # Generated
 target/*
 
