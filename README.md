@@ -8,4 +8,4 @@ Creators:
 4. Szymon Wróbel [@szymonwrobel](https://github.com/szymonwrobel)
 
 Test change to do any push
-Build trigger test 2
+Build trigger
