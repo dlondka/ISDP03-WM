@@ -6,9 +6,3 @@ Creators:
 2. Karolina Kowalczyk [@Xarria](https://github.com/Xarria)
 3. Daniel Łondka [@dlondka](https://github.com/dlondka)
 4. Szymon Wróbel [@szymonwrobel](https://github.com/szymonwrobel)
-
-Test change to do any push
-Build trigger
-Build trigger test 3
-Build trigger test 4
-Build trigger test 5
