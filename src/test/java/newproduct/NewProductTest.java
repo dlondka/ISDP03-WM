@@ -34,7 +34,7 @@ public class NewProductTest {
 
     @Before
     public void setUp() {
-        System.setProperty("webdriver.firefox.driver", "/home/student/geckodriver");
+        System.setProperty("webdriver.gecko.driver", "/home/student/geckodriver");
         webDriver = new FirefoxDriver();
         url = "https://localhost:8181/faces/common/signIn.xhtml";
         createProductUrl = "https://localhost:8181/faces/product/createNewProduct.xhtml";

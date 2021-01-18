@@ -22,7 +22,7 @@ public class EditLocationTest {
     
     @Before
     public void setUp() {
-        System.setProperty("webdriver.firefox.driver", "/home/student/geckodriver");
+        System.setProperty("webdriver.gecko.driver", "/home/student/geckodriver");
         driver = new FirefoxDriver();
         signIn = "https://localhost:8181/faces/common/signIn.xhtml";
         locationList = "https://localhost:8181/faces/location/listLocations.xhtml";
