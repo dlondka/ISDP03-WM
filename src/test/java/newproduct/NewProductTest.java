@@ -58,13 +58,13 @@ public class NewProductTest {
         loginElem.sendKeys(login);
         passwordElem.sendKeys(password);
         webDriver.findElement(By.xpath("/html/body/div/div[3]/div/form/p/input")).click();
-        
+
         webDriver.get(createProductUrl);
-        
+
         // check if user signed in 
-        Assert.assertTrue(webDriver.getPageSource().contains("Authenticated user: LRey") || 
-                          webDriver.getPageSource().contains("Uwierzytelniony użytkownik: LRey"));
-        
+        Assert.assertTrue(webDriver.getPageSource().contains("Authenticated user: LRey")
+                || webDriver.getPageSource().contains("Uwierzytelniony użytkownik: LRey"));
+
         // create new product
         WebElement productSymbolElem = webDriver.findElement(By.name("CreateProductForm:productSymbol"));
         productSymbolElem.clear();
@@ -82,20 +82,22 @@ public class NewProductTest {
 
         // go to list of products
         webDriver.get(productsListUrl);
-        
+
         // check if new product created
-        Assert.assertTrue(webDriver.getPageSource().contains("1234567890000")); 
+        Assert.assertTrue(webDriver.getPageSource().contains("1234567890000"));
 
         // delete previously created product
         webDriver.findElement(By.name("j_idt26:j_idt27:0:onlyOffice:j_idt40")).click();
         webDriver.findElement(By.name("DeleteProductForm:j_idt30")).click();
-        
+
         // check if product deleted
         Assert.assertFalse(webDriver.getPageSource().contains("1234567890000"));
     }
 
     @After
     public void tearDown() {
-        webDriver.quit();
+        if (webDriver != null) {
+            webDriver.quit();
+        }
     }
 }
