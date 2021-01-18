@@ -52,8 +52,7 @@ public class NewUserTest {
         createUserUrl = "https://localhost:8181/faces/common/registerAccount.xhtml";
         newUsersUrl = "https://localhost:8181/faces/account/listNewAccounts.xhtml";
         userName = "DMitchell";
-        userPass = "P@ssw0rd";
-        
+        userPass = "P@ssw0rd";       
         newUserName = "Daniel";
         newUserSurname = "Londka";
         newUserMail = "isdp.zespol3@gmail.com";
@@ -122,20 +121,7 @@ public class NewUserTest {
                 driver.getPageSource().contains(newUserName) &&
                 driver.getPageSource().contains(newUserSurname) &&
                 driver.getPageSource().contains(newUserMail));
-        
-        
-        WebElement users = driver.findElement(By.xpath("/html/body/div/div[3]/div/form/table"));
-        List<WebElement> trCollection = users.findElements(By.xpath("/html/body/div/div[3]/div/form/table/tbody/tr"));
-        
-        for (WebElement trElem: trCollection) {
-            //List<WebElement> tdCollection = trElem.findElements(By.);
-        }
-        
-        
-        
-        
-        
-        
+     
         driver.findElement(By.xpath("/html/body/div/div[3]/div/form/table/tbody/tr[4]/td[5]/input[2]")).click();
         
         driver.findElement(By.xpath("/html/body/div/div[3]/div/form/input[2]")).click();
