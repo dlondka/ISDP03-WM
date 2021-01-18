@@ -30,7 +30,7 @@ public class EditLocationTest {
         FirefoxBinary firefoxBinary = new FirefoxBinary();
         FirefoxOptions options = new FirefoxOptions();
         options.setBinary(firefoxBinary);
-        //options.setHeadless(true);
+        options.setHeadless(true);
         driver = new FirefoxDriver(options);
         waitDriver = new WebDriverWait(driver, 10);
         signIn = "https://localhost:8181/faces/common/signIn.xhtml";
