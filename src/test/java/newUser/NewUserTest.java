@@ -15,6 +15,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -40,8 +41,11 @@ public class NewUserTest {
     
     @Before
     public void setUp() throws InterruptedException {
+        FirefoxOptions options = new FirefoxOptions();
+                options.addArguments("headless");
+                options.addArguments("window-size=1200x600");
         sleep(3000);
-        driver = new FirefoxDriver();
+        driver = new FirefoxDriver(options);
         loginUrl = "https://localhost:8181/faces/common/signIn.xhtml";
         createUserUrl = "https://localhost:8181/faces/common/registerAccount.xhtml";
         newUsersUrl = "https://localhost:8181/faces/account/listNewAccounts.xhtml";

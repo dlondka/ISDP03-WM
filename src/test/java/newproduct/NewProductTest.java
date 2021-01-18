@@ -13,6 +13,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 
 /**
  *
@@ -33,7 +34,10 @@ public class NewProductTest {
 
     @Before
     public void setUp() {
-        webDriver = new FirefoxDriver();
+        FirefoxOptions options = new FirefoxOptions();
+                options.addArguments("headless");
+                options.addArguments("window-size=1200x600");
+        webDriver = new FirefoxDriver(options);
         url = "https://localhost:8181/faces/common/signIn.xhtml";
         createProductUrl = "https://localhost:8181/faces/product/createNewProduct.xhtml";
         productsListUrl = "https://localhost:8181/faces/product/listProducts.xhtml";
