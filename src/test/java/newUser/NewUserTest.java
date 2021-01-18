@@ -41,7 +41,7 @@ public class NewUserTest {
     
     @Before
     public void setUp() throws InterruptedException {
-        sleep(3000);
+        System.setProperty("webdriver.firefox.driver", "/home/student");
         driver = new FirefoxDriver();
         loginUrl = "https://localhost:8181/faces/common/signIn.xhtml";
         createUserUrl = "https://localhost:8181/faces/common/registerAccount.xhtml";

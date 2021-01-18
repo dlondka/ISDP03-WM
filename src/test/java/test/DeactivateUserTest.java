@@ -17,6 +17,7 @@ public class DeactivateUserTest {
     
     @Before
     public void setUp() {
+        System.setProperty("webdriver.firefox.driver", "/home/student");
         webDriver = new FirefoxDriver();
         url = "https://localhost:8181/faces/common/signIn.xhtml";
         username = "DMitchell";
