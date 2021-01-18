@@ -22,10 +22,7 @@ public class EditLocationTest {
     
     @Before
     public void setUp() {
-        FirefoxOptions options = new FirefoxOptions();
-                options.addArguments("headless");
-                options.addArguments("window-size=1200x600");
-        driver = new FirefoxDriver(options);
+        driver = new FirefoxDriver();
         signIn = "https://localhost:8181/faces/common/signIn.xhtml";
         locationList = "https://localhost:8181/faces/location/listLocations.xhtml";
         username = "JDoe";

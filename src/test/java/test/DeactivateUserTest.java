@@ -17,10 +17,7 @@ public class DeactivateUserTest {
     
     @Before
     public void setUp() {
-        FirefoxOptions options = new FirefoxOptions();
-                options.addArguments("headless");
-                options.addArguments("window-size=1200x600");
-        webDriver = new FirefoxDriver(options);
+        webDriver = new FirefoxDriver();
         url = "https://localhost:8181/faces/common/signIn.xhtml";
         username = "DMitchell";
         password = "P@ssw0rd";        
