@@ -9,11 +9,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 public class EditLocationTest {
     
     WebDriver driver;
+    WebDriverWait waitDriver;
     String signIn;
     String username;
     String password;
@@ -27,8 +30,9 @@ public class EditLocationTest {
         FirefoxBinary firefoxBinary = new FirefoxBinary();
         FirefoxOptions options = new FirefoxOptions();
         options.setBinary(firefoxBinary);
-        options.setHeadless(true);
+        //options.setHeadless(true);
         driver = new FirefoxDriver(options);
+        waitDriver = new WebDriverWait(driver, 10);
         signIn = "https://localhost:8181/faces/common/signIn.xhtml";
         locationList = "https://localhost:8181/faces/location/listLocations.xhtml";
         username = "JDoe";
@@ -39,7 +43,7 @@ public class EditLocationTest {
     public void editLocationTest() throws InterruptedException{
         //sign in as warehouse
         driver.get(signIn);
-        WebElement login = driver.findElement(By.name("j_username"));
+        WebElement login = waitDriver.until(ExpectedConditions.presenceOfElementLocated(By.name("j_username")));
         login.clear();
         login.sendKeys(username);
         
@@ -55,7 +59,7 @@ public class EditLocationTest {
         driver.get(locationList);
         
         //gut current location type
-        WebElement locationType = driver.findElement(By.cssSelector(".table > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(2)"));
+        WebElement locationType = waitDriver.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".table > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(2)")));
         String oldType = locationType.getText();
 
         //go to edition
@@ -63,7 +67,7 @@ public class EditLocationTest {
         editFirstLocationBtn.click();
         
         //pick a new type
-        WebElement newTypePicker = driver.findElement(By.name("EditLocationForm:locationType"));
+        WebElement newTypePicker = waitDriver.until(ExpectedConditions.presenceOfElementLocated(By.name("EditLocationForm:locationType")));
         newTypePicker.click();
         
         //get two different types
@@ -76,14 +80,14 @@ public class EditLocationTest {
         if(!oldType.equals(type1)){
             newType1.click();
             driver.findElement(By.name("EditLocationForm:j_idt31")).click();
-            WebElement editedType = driver.findElement(By.cssSelector(".table > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(2)"));
+            WebElement editedType = waitDriver.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".table > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(2)")));
             Assert.assertFalse(editedType.getText().equals(oldType));
             Assert.assertEquals(editedType.getText(), type1);
         }
         else{
             newType2.click();
             driver.findElement(By.name("EditLocationForm:j_idt31")).click();
-            WebElement editedType = driver.findElement(By.cssSelector(".table > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(2)"));  
+            WebElement editedType = waitDriver.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".table > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(2)")));  
             Assert.assertFalse(editedType.getText().equals(oldType));
             Assert.assertEquals(editedType.getText(), type2);
         }  
