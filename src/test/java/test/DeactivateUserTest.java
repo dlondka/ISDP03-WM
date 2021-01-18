@@ -22,13 +22,16 @@ public class DeactivateUserTest {
         password = "P@ssw0rd";        
     }
     
-@Test
+    @Test
     public void deactivateUser() {
         login();
         webDriver.get("https://localhost:8181/faces/account/listAuthorizedAccounts.xhtml");
-        webDriver.findElement(By.name("j_idt26:j_idt27:2:j_idt43")).click();
         
+        webDriver.findElement(By.name("j_idt26:j_idt27:2:j_idt43")).click();
         Assert.assertEquals("true", webDriver.findElement(By.xpath("/html/body/div/div[3]/div/form/table/tbody/tr[3]/td[5]/input[5]")).getAttribute("disabled"));
+        
+        webDriver.findElement(By.name("j_idt26:j_idt27:2:j_idt42")).click();
+        Assert.assertEquals("true", webDriver.findElement(By.xpath("/html/body/div/div[3]/div/form/table/tbody/tr[3]/td[5]/input[4]")).getAttribute("disabled"));
     }
     
     
