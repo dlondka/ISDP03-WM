@@ -18,7 +18,9 @@ public class DeactivateUserTest {
     @Before
     public void setUp() {
         System.setProperty("webdriver.gecko.driver", "/home/student/geckodriver");
-        webDriver = new FirefoxDriver();
+        FirefoxOptions options = new FirefoxOptions();
+        options.setHeadless(true);
+        webDriver = new FirefoxDriver(options);
         url = "https://localhost:8181/faces/common/signIn.xhtml";
         username = "DMitchell";
         password = "P@ssw0rd";        
