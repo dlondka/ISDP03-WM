@@ -65,7 +65,6 @@ public class NewUserTest {
     @Test
     public void testAddNewUser() throws Exception {
         // Create a new instance of the Firefox driver
-        WebDriver driver = new FirefoxDriver();
 
         driver.get(loginUrl);
         
