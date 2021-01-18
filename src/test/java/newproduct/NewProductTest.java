@@ -57,12 +57,13 @@ public class NewProductTest {
         passwordElem.clear();
         loginElem.sendKeys(login);
         passwordElem.sendKeys(password);
-        webDriver.findElement(By.xpath("//input[@value='Sign in']")).click();
+        webDriver.findElement(By.xpath("/html/body/div/div[3]/div/form/p/input")).click();
         
         webDriver.get(createProductUrl);
         
         // check if user signed in 
-        Assert.assertTrue(webDriver.getPageSource().contains("Authenticated user: LRey"));
+        Assert.assertTrue(webDriver.getPageSource().contains("Authenticated user: LRey") || 
+                          webDriver.getPageSource().contains("Uwierzytelniony użytkownik: LRey"));
         
         // create new product
         WebElement productSymbolElem = webDriver.findElement(By.name("CreateProductForm:productSymbol"));
@@ -77,7 +78,7 @@ public class NewProductTest {
         descriptionElem.sendKeys(description);
         priceElem.sendKeys(price);
         weightElem.sendKeys(weight);
-        webDriver.findElement(By.xpath("//input[@value='Create product']")).click();
+        webDriver.findElement(By.name("CreateProductForm:j_idt35")).click();
 
         // go to list of products
         webDriver.get(productsListUrl);
