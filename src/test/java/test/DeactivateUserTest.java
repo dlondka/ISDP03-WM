@@ -1,5 +1,6 @@
 package test;
 
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -53,6 +54,14 @@ public class DeactivateUserTest {
         passwordName.sendKeys(password);
         
         webDriver.findElement(By.xpath("/html/body/div/div[3]/div/form/p/input")).click();
+    }
+    
+    @After
+    public void tearDown() {
+        // Close the browser
+        if (webDriver != null) {
+            webDriver.quit();    
+        }
     }
     
 }
