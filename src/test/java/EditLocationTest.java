@@ -30,7 +30,7 @@ public class EditLocationTest {
     
     @Test
     public void editLocationTest() throws InterruptedException{
-        //sign in
+        //sign in as warehouse
         driver.get(signIn);
         WebElement login = driver.findElement(By.name("j_username"));
         login.clear();
