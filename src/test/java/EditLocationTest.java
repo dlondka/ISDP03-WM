@@ -53,9 +53,7 @@ public class EditLocationTest {
         pass.sendKeys(password);
 
         waitDriver.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".content > form:nth-child(1) > p:nth-child(2) > input:nth-child(2)"))).click();
-        
-        //Assert.assertFalse(driver.getPageSource().contains("Incorrect login or password") || driver.getPageSource().contains("Niepoprawny login lub hasło "));
-        
+                       
         //display list
         driver.get(locationList);
         
