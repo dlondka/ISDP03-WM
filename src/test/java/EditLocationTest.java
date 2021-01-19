@@ -79,14 +79,14 @@ public class EditLocationTest {
             newType1.click();
             waitDriver.until(ExpectedConditions.presenceOfElementLocated(By.name("EditLocationForm:j_idt31"))).click();
             WebElement editedType = driver.findElement(By.cssSelector(".table > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(2)"));
-            Assert.assertTrue(editedType.getText().equals(oldType));
+            Assert.assertFalse(editedType.getText().equals(oldType));
             Assert.assertEquals(editedType.getText(), type1);
         }
         else{
             newType2.click();
             waitDriver.until(ExpectedConditions.presenceOfElementLocated(By.name("EditLocationForm:j_idt31"))).click();
             WebElement editedType = driver.findElement(By.cssSelector(".table > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(2)"));  
-            Assert.assertTrue(editedType.getText().equals(oldType));
+            Assert.assertFalse(editedType.getText().equals(oldType));
             Assert.assertEquals(editedType.getText(), type2);
         }  
     }
