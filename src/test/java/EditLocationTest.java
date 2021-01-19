@@ -70,7 +70,7 @@ public class EditLocationTest {
         WebElement newTypePicker = waitDriver.until(ExpectedConditions.presenceOfElementLocated(By.name("EditLocationForm:locationType")));
         newTypePicker.click();
         
-        //get two different types
+        //get two different types of location
         WebElement newType1 = driver.findElement(By.cssSelector("#EditLocationForm\\:locationType > option:nth-child(4)"));
         WebElement newType2 = driver.findElement(By.cssSelector("#EditLocationForm\\:locationType > option:nth-child(3)"));
         String type1 = newType1.getText();
