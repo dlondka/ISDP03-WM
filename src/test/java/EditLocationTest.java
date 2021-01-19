@@ -1,4 +1,3 @@
-import static java.lang.Thread.sleep;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
