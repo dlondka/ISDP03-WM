@@ -47,11 +47,11 @@ public class EditLocationTest {
         login.clear();
         login.sendKeys(username);
         
-        WebElement pass = waitDriver.until(ExpectedConditions.presenceOfElementLocated(By.name("j_password")));
+        WebElement pass = driver.findElement(By.name("j_password"));
         pass.clear();
         pass.sendKeys(password);
 
-        waitDriver.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".content > form:nth-child(1) > p:nth-child(2) > input:nth-child(2)"))).click();
+        driver.findElement(By.cssSelector(".content > form:nth-child(1) > p:nth-child(2) > input:nth-child(2)")).click();
                        
         //display list
         driver.get(locationList);
@@ -61,16 +61,16 @@ public class EditLocationTest {
         String oldType = locationType.getText();
 
         //go to edition
-        WebElement editFirstLocationBtn = waitDriver.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".table > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(5) > input:nth-child(1)")));
+        WebElement editFirstLocationBtn = driver.findElement(By.cssSelector(".table > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(5) > input:nth-child(1)"));
         editFirstLocationBtn.click();
         
         //pick a new type
-        WebElement newTypePicker = waitDriver.until(ExpectedConditions.presenceOfElementLocated(By.name("EditLocationForm:locationType")));
+        WebElement newTypePicker = driver.findElement(By.name("EditLocationForm:locationType"));
         newTypePicker.click();
         
         //get two different types of location
-        WebElement newType1 = waitDriver.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("#EditLocationForm\\:locationType > option:nth-child(4)")));
-        WebElement newType2 = waitDriver.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("#EditLocationForm\\:locationType > option:nth-child(3)")));
+        WebElement newType1 = driver.findElement(By.cssSelector("#EditLocationForm\\:locationType > option:nth-child(4)"));
+        WebElement newType2 = driver.findElement(By.cssSelector("#EditLocationForm\\:locationType > option:nth-child(3)"));
         String type1 = newType1.getText();
         String type2 = newType2.getText();
 
@@ -78,14 +78,14 @@ public class EditLocationTest {
         if(!oldType.equals(type1)){
             newType1.click();
             waitDriver.until(ExpectedConditions.presenceOfElementLocated(By.name("EditLocationForm:j_idt31"))).click();
-            WebElement editedType = waitDriver.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".table > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(2)")));
+            WebElement editedType = driver.findElement(By.cssSelector(".table > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(2)"));
             Assert.assertFalse(editedType.getText().equals(oldType));
             Assert.assertEquals(editedType.getText(), type1);
         }
         else{
             newType2.click();
             waitDriver.until(ExpectedConditions.presenceOfElementLocated(By.name("EditLocationForm:j_idt31"))).click();
-            WebElement editedType = waitDriver.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".table > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(2)")));  
+            WebElement editedType = driver.findElement(By.cssSelector(".table > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(2)"));  
             Assert.assertFalse(editedType.getText().equals(oldType));
             Assert.assertEquals(editedType.getText(), type2);
         }  
