@@ -1,9 +1,6 @@
-package tests;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,6 +9,10 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 
 
 public class EditLocationTest {
@@ -25,7 +26,7 @@ public class EditLocationTest {
     String locationList;
     String location;
     
-    @BeforeAll
+    @BeforeClass
     public void setUp() {
         System.setProperty("webdriver.gecko.driver", "/home/student/geckodriver");
         FirefoxBinary firefoxBinary = new FirefoxBinary();
@@ -81,19 +82,19 @@ public class EditLocationTest {
             newType1.click();
             waitDriver.until(ExpectedConditions.presenceOfElementLocated(By.name("EditLocationForm:j_idt31"))).click();
             WebElement editedType = waitDriver.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".table > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(2)")));
-            Assertions.assertFalse(editedType.getText().equals(oldType));
-            Assertions.assertEquals(editedType.getText(), type1);
+            Assert.assertFalse(editedType.getText().equals(oldType));
+            Assert.assertEquals(editedType.getText(), type1);
         }
         else{
             newType2.click();
             waitDriver.until(ExpectedConditions.presenceOfElementLocated(By.name("EditLocationForm:j_idt31"))).click();
             WebElement editedType = waitDriver.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".table > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(2)")));  
-            Assertions.assertFalse(editedType.getText().equals(oldType));
-            Assertions.assertEquals(editedType.getText(), type2);
+            Assert.assertFalse(editedType.getText().equals(oldType));
+            Assert.assertEquals(editedType.getText(), type2);
         }  
     }
     
-    @AfterAll
+    @AfterClass
     public void tearDown(){
         if(driver != null){
             driver.quit();

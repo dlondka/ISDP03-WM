@@ -2,10 +2,10 @@
 <suite thread-count="4" name=" Parallel Testing Suite" parallel="classes">
     <test thread-count="4" name="Parallel Tests" parallel="classes">
         <classes>
-            <class name="tests.DeactivateUserTest" />
-            <class name="tests.EditLocationTest" />
-            <class name="tests.NewUserTest" />
-            <class name="tests.NewProductTest" />          
+            <class name="DeactivateUserTest" />
+            <class name="EditLocationTest" />
+            <class name="NewUserTest" />
+            <class name="NewProductTest" />          
         </classes>
     </test>
 </suite>
