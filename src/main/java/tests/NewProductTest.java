@@ -1,7 +1,10 @@
-import org.junit.Test;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
+package tests;
+
+
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -23,7 +26,7 @@ public class NewProductTest {
     private String price;
     private String weight;
 
-    @Before
+    @BeforeAll
     public void setUp() {
         System.setProperty("webdriver.gecko.driver", "/home/student/geckodriver");
         FirefoxBinary firefoxBinary = new FirefoxBinary();
@@ -59,7 +62,7 @@ public class NewProductTest {
         webDriver.get(createProductUrl);
 
         // check if user signed in 
-        Assert.assertTrue(webDriver.getPageSource().contains("Authenticated user: LRey")
+        Assertions.assertTrue(webDriver.getPageSource().contains("Authenticated user: LRey")
                 || webDriver.getPageSource().contains("Uwierzytelniony użytkownik: LRey"));
 
         // create new product
@@ -81,17 +84,17 @@ public class NewProductTest {
         webDriver.get(productsListUrl);
 
         // check if new product created
-        Assert.assertTrue(webDriver.getPageSource().contains("1234567890000"));
+        Assertions.assertTrue(webDriver.getPageSource().contains("1234567890000"));
 
         // delete previously created product
         webDriver.findElement(By.name("j_idt26:j_idt27:0:onlyOffice:j_idt40")).click();
         webDriver.findElement(By.name("DeleteProductForm:j_idt30")).click();
 
         // check if product deleted
-        Assert.assertFalse(webDriver.getPageSource().contains("1234567890000"));
+        Assertions.assertFalse(webDriver.getPageSource().contains("1234567890000"));
     }
 
-    @After
+    @AfterAll
     public void tearDown() {
         if (webDriver != null) {
             webDriver.quit();

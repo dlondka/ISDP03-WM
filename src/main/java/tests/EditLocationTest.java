@@ -1,7 +1,9 @@
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+package tests;
+
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -23,7 +25,7 @@ public class EditLocationTest {
     String locationList;
     String location;
     
-    @Before
+    @BeforeAll
     public void setUp() {
         System.setProperty("webdriver.gecko.driver", "/home/student/geckodriver");
         FirefoxBinary firefoxBinary = new FirefoxBinary();
@@ -79,19 +81,19 @@ public class EditLocationTest {
             newType1.click();
             waitDriver.until(ExpectedConditions.presenceOfElementLocated(By.name("EditLocationForm:j_idt31"))).click();
             WebElement editedType = waitDriver.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".table > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(2)")));
-            Assert.assertFalse(editedType.getText().equals(oldType));
-            Assert.assertEquals(editedType.getText(), type1);
+            Assertions.assertFalse(editedType.getText().equals(oldType));
+            Assertions.assertEquals(editedType.getText(), type1);
         }
         else{
             newType2.click();
             waitDriver.until(ExpectedConditions.presenceOfElementLocated(By.name("EditLocationForm:j_idt31"))).click();
             WebElement editedType = waitDriver.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".table > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(2)")));  
-            Assert.assertFalse(editedType.getText().equals(oldType));
-            Assert.assertEquals(editedType.getText(), type2);
+            Assertions.assertFalse(editedType.getText().equals(oldType));
+            Assertions.assertEquals(editedType.getText(), type2);
         }  
     }
     
-    @After
+    @AfterAll
     public void tearDown(){
         if(driver != null){
             driver.quit();

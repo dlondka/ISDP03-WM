@@ -1,7 +1,9 @@
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+package tests;
+
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,7 +17,7 @@ public class DeactivateUserTest {
     private String username;
     private String password;
     
-    @Before
+    @BeforeAll
     public void setUp() {
         System.setProperty("webdriver.gecko.driver", "/home/student/geckodriver");
         FirefoxBinary firefoxBinary = new FirefoxBinary();
@@ -34,10 +36,10 @@ public class DeactivateUserTest {
         webDriver.get("https://localhost:8181/faces/account/listAuthorizedAccounts.xhtml");
         
         webDriver.findElement(By.name("j_idt26:j_idt27:2:j_idt43")).click();
-        Assert.assertEquals("true", webDriver.findElement(By.xpath("/html/body/div/div[3]/div/form/table/tbody/tr[3]/td[5]/input[5]")).getAttribute("disabled"));
+        Assertions.assertEquals("true", webDriver.findElement(By.xpath("/html/body/div/div[3]/div/form/table/tbody/tr[3]/td[5]/input[5]")).getAttribute("disabled"));
         
         webDriver.findElement(By.name("j_idt26:j_idt27:2:j_idt42")).click();
-        Assert.assertEquals("true", webDriver.findElement(By.xpath("/html/body/div/div[3]/div/form/table/tbody/tr[3]/td[5]/input[4]")).getAttribute("disabled"));
+        Assertions.assertEquals("true", webDriver.findElement(By.xpath("/html/body/div/div[3]/div/form/table/tbody/tr[3]/td[5]/input[4]")).getAttribute("disabled"));
     }
     
     
@@ -54,7 +56,7 @@ public class DeactivateUserTest {
         webDriver.findElement(By.xpath("/html/body/div/div[3]/div/form/p/input")).click();
     }
     
-    @After
+    @AfterAll
     public void tearDown() {
         // Close the browser
         if (webDriver != null) {

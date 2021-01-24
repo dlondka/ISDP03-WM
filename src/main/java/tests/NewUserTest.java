@@ -1,7 +1,10 @@
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+package tests;
+
+
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -26,7 +29,7 @@ public class NewUserTest {
     private String newUserQuestion;
     private String newUserAnswer;
     
-    @Before
+    @BeforeAll
     public void setUp() throws InterruptedException {
         System.setProperty("webdriver.gecko.driver", "/home/student/geckodriver");
         FirefoxBinary firefoxBinary = new FirefoxBinary();
@@ -102,7 +105,7 @@ public class NewUserTest {
         
         driver.get(newUsersUrl);
         
-        Assert.assertTrue(driver.getPageSource().contains(newUserLogin) &&
+        Assertions.assertTrue(driver.getPageSource().contains(newUserLogin) &&
                 driver.getPageSource().contains(newUserName) &&
                 driver.getPageSource().contains(newUserSurname) &&
                 driver.getPageSource().contains(newUserMail));
@@ -111,11 +114,11 @@ public class NewUserTest {
         
         driver.findElement(By.xpath("/html/body/div/div[3]/div/form/input[2]")).click();
         
-        Assert.assertFalse(driver.getPageSource().contains(newUserLogin) ||
+        Assertions.assertFalse(driver.getPageSource().contains(newUserLogin) ||
                 driver.getPageSource().contains(newUserMail));
     }
     
-    @After
+    @AfterAll
     public void tearDown() {
         // Close the browser
         if (driver != null) {
