@@ -7,4 +7,4 @@ Creators:
 3. Daniel Łondka [@dlondka](https://github.com/dlondka)
 4. Szymon Wróbel [@szymonwrobel](https://github.com/szymonwrobel)
 
-Build trigger test
+Build trigger test.
